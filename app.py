@@ -21,8 +21,8 @@ conn = sqlite3.connect('data.db', check_same_thread=False)
 db = conn.cursor()
 
 # TWILIO
-account_sid = '{INSERT_ACCOUNT_SID}' # AC4efa94ea820b2eb3aedbc24e4897ac05
-auth_token = '{INSERT_AUTH_TOKEN}' # 59c8c647d0aefc6fe811cf01fa819f47
+account_sid = '{INSERT_ACCOUNT_SID}'
+auth_token = '{INSERT_AUTH_TOKEN}'
 client = Client(account_sid, auth_token)
 
 # GOOGLE MAPS
