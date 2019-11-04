@@ -11,11 +11,11 @@ FloodGate has several functions. The SMS notification system provides persons in
 ### Twilio API (SMS), Google Maps (GCP), Flask, and Ngrok
 FloodGate's creation required building and utilizing functional RESTful APIs and packages to create a responsive site. The site is styled via Python's Flask library. The backend server is supported by Ngrok, providing localhost access to webhooks. The SMS ping system is backed entirely by Twilio's Programmable SMS API, providing FloodGate users and first-responders with RESTful, real-time notifications. We also use Firebase's Cloud Firestore database service to host our sensor and SMS data (with SQLite3 as an offline backup) and GCP's Google Maps Platform to display location-based data on interactive maps.
 
-### Arduino, C, Python, Matplotlib and a Whole Lot of Solder
+### Arduino, C, Python, Matplotlib, and a whole lot of Solder
 The FloodGate sensor is built using an Arduino 101 and Ultrasonic Distance Module HR-S04 using the established Arduino IDE and C. Serial data is handling via Python's PySerial library.
 
 ## Challenges I ran into
-**It was my first time making an actual project on an Arduino, and I had never really used Flask before**. In the process of making the site, I ran into several production issues with Ngrok. Additionally, I encountered difficulties connecting to the development server on several instances, and the Twilio versioning proved challenging for the back-end.
+**FloodGate was my first time making an actual project on Arduino, and I've never used Flask before**. In the process of making the site, I ran into several production issues with Ngrok. Additionally, I encountered difficulties connecting to the development server on several instances, and the Twilio versioning proved challenging for the back-end.
 
 ## Accomplishments that I'm proud of
 I'm amazed that I was able to complete FloodGate over such a small duration, especially considering my lack of experience with Flask and Arduino. I faced many set-backs with the site interface, so ultimately having a working version of the site pushed into production was extremely fulfilling.
