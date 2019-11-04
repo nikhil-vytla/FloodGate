@@ -1,0 +1,269 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  FloodGate.io
+{% endblock %}
+
+{% block extra %}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+    
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Month', 'Water Score', 'Danger Score'],
+          ['Nov',  6.8,       5.5],
+          ['Dec',  7.5,      5.7],
+          ['Jan',  8.2,      6.3],
+          ['Feb',  7.7,      6.5],
+          ['Mar',  '{{ score }}',      '{{ algae }}']
+        ]);
+        var options = {
+          title: 'Historical Water Levels',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+        chart.draw(data, options);
+      }
+    </script>
+    <style type="text/css">
+      #map {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+{% endblock %}
+
+{% block main %}
+    <div class="site-blocks-cover overlay" style="background-image: url(/static/images/hurricane1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center text-center justify-content-center">
+          <div class="col-md-8">
+            <span class="sub-text">Leveraging crowd-sourced data for early flood warning & detection</span>
+            <h1>FloodGate</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "{INSERT_API_KEY}",
+        authDomain: "{PROJECT_ID}.firebaseapp.com",
+        databaseURL: "{INSERT_DATABASE_URL}",
+        projectId: "{PROJECT_ID}",
+        storageBucket: "{PROJECT_ID}.appspot.com",
+        messagingSenderId: "{INSERT_SENDER_ID}",
+        appId: "{INSERT_APP_ID}",
+        measurementId: "{INSERT_MEASUREMENT_ID}"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+
+     <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+
+    <div class="site-block-1">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <a href="/howto" class="site-block-feature d-flex p-4 rounded mb-4">
+              <div class="mr-3">
+                <img src="../static/images/Icons and Logo/Binoculars.png" height=50px style="margin-top:13px">
+              </div>
+              <div class="text">
+                <h3>Water Spotting</h3>
+                <p>Contribute to data analytics and cleanup efforts by pinging the location of water levels in your local community.</p>
+              </div>
+            </a>   
+          </div>
+          <div class="col-lg-6">
+            <a href="/map" class="site-block-feature d-flex p-4 rounded mb-4">
+              <div class="mr-3">
+                <img src="../static/images/Icons and Logo/Map.png" height=50px style="margin-top:10px">
+              </div>
+              <div class="text">
+                <h3>Water Map</h3>
+                <p>Resource-find using a map of water level-related incidents located by users and remote minicomputers in NC, updated hourly.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section  border-bottom">
+      <h2 class="font-weight-bold text-black mb-5 text-center" id="HOWITWORKS">How FloodGate Works</h2>
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+            <div class="media custom-media">
+              <div class="mr-3 icon"> <img src="../static/images/Icons and Logo/Ping.png" height=50px style="margin-left: 13px; margin-top: 7px"> </div>
+              <div class="media-body">
+                <h5 class="mt-0">1. Crowd-Sourced Pings</h5>
+                Both human-powered and autonomous devices ping locations or AOEs of visible/sensor-based water level increases using the Twilio SMS API.
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+            <div class="media custom-media">
+              <div class="mr-3 icon"><img src="../static/images/Icons and Logo/Analysis.png" height=60px></div>
+              <div class="media-body">
+                <h5 class="mt-0">2. Data Analysis</h5>
+                Data points are evaluated into a dynamic flood warning score and presented on a heatmap of recently reported incidents. This can be used to model flood behavior in real-time. 
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+            <div class="media custom-media">
+              <div class="mr-3 icon"><img src="../static/images/Icons and Logo/alarm.png" height=60px></div>
+              <div class="media-body">
+                <h5 class="mt-0">3. First Response</h5>
+                Using this data, first responders and volunteers can aid stranded/vulnerable people, animals, and belongings while local authorities are empowered to make informed decisions. 
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section site-block-3 bg-light">
+      <h2 class="site-heading text-black mb-5 text-center" id="ALIGNCENTER">The State of our Water</h2>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 mb-5 mb-lg-0">
+            <div id="map"></div>
+            </div>
+            <!-- <div class="img-border">
+
+          </div> -->
+          <div class="col-lg-5">
+            <div class="row row-items">
+              <div class="col-6">
+                <a class="d-flex text-center feature active p-4 mb-4 bg-white">
+                  <span class="align-self-center w-100">
+                    <span class="d-block mb-3">
+                      <span class="bigScore" id="trashScore"> {{ score }} </span>
+                    </span>
+                    <h3>Water Score</h3>
+                  </span>
+                </a>
+              </div>
+              <div class="col-6">
+                <a class="d-flex text-center feature active p-4 mb-4 bg-white">
+                  <span class="align-self-center w-100">
+                    <span class="d-block mb-3">
+                        <span class="bigScore" id="algaeScore"> {{ algae }} </span>
+                    </span>
+                    <h3>Danger Score</h3>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div id="curve_chart" ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <span class="sub-title">News &amp; Updates</span>
+            <h2 class="font-weight-bold text-black mb-5">Community Contributors</h2>
+          </div>
+        </div>
+        <div class="row mb-5">
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">
+            <a  class="d-block figure">
+              <img src="/static/images/dorian1.jpg" alt="Image" class="img-fluid">
+            </a>
+            <span class="text-muted d-block mb-2">31, August 2019</span>
+            <h3><a >Dorian: How Early Detection Helps Enable Flood-Prone Communities</a></h3>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">
+            <a class="d-block figure">
+              <img src="/static/images/humberto1.jpg" alt="Image" class="img-fluid">
+            </a>
+            <span class="text-muted d-block mb-2">14, September 2019</span>
+            <h3><a >A Case Study on Humberto: The Importance of Monitoring Activity 1,000 Miles Away </a></h3>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">
+            <a  class="d-block figure">
+              <img src="/static/images/portland1.jpg" alt="Image" class="img-fluid">
+            </a>
+            <span class="text-muted d-block mb-2">7, October 2019</span>
+            <h3><a href="#">Study on Flood Vulnerability of Low-Income Populations Shows Push for Local Action </a></h3>
+          </div>
+
+        </div>
+        <div class="row mt-5 text-center">
+          <div class="col-12">
+            <p><a  class="btn btn-primary btn-lg rounded-0">View All Posts</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+        function initMap(){
+          // Map options
+          var options = {
+            zoom:10,
+            center:{lat:34.1871,lng:-77.8824}
+          }
+    
+          // New map
+          var map = new google.maps.Map(document.getElementById('map'), options);
+
+          // Array of markers
+          var markers = JSON.parse('{{ markerdata | tojson | safe }}');
+          console.log(markers);
+
+          // Loop through markers
+          for(var i = 0; i < markers.length; i++){
+            // Add marker
+            addMarker(markers[i]);
+          }
+
+          // Add Marker Function
+          function addMarker(props){
+            var marker = new google.maps.Marker({
+              position:props.coords,
+              map:map,
+            });
+            // Check content
+            if(props.content){
+              var infoWindow = new google.maps.InfoWindow({
+                content:props.content
+              });
+    
+              marker.addListener('click', function(){
+                infoWindow.open(map, marker); 
+              });
+            }}}
+      </script>
+    
+      <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key={INSERT_API_KEY}&callback=initMap">
+        </script>
+
+{% endblock %}

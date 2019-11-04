@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  How to
+{% endblock %}
+
+{% block main %}
+    <div class="site-blocks-cover overlay inner-page" style="background-image: url(/static/images/hurricane1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="container py-1">
+        <div class="row align-items-center">
+          <div class="col-md-10">
+            <span class="sub-text">Simple, Safe, & Secure</span>
+            <h1>SMS Ping System</h1>
+          </div>
+        </div>
+      </div>
+    </div>  
+
+    <div class="site-section">
+      <h2 class="site-heading text-black mb-5 text-center" id="ALIGNCENTER">How to report via SMS</h2>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-4 col-md-6 mb-5 post-entry">
+            <a class="d-block figure">
+              <img src="/static/images/risingwater1.jpg" alt="Rising Water" class="img-fluid">
+            </a>
+            <h2>Step 1:</h2>
+            <h3><a>Spot rising water levels.</a></h3>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-5 post-entry">
+            <a class="d-block figure">
+              <img src="/static/images/textalert1.jpg" alt="Text Us" class="img-fluid">
+            </a>
+            <h2>Step 2:</h2>
+            <h3><a>Text FloodGate at +1 (201) 482-3830 and use the keyword 'report' followed by the 'type', 'severity' and 'location' properties each separated by a space.</a></h3>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-5 post-entry">
+            <a class="d-block figure">
+              <img src="/static/images/checklist.jpg" alt="Describe the issue" class="img-fluid">
+            </a>
+            <h2>Step 3:</h2>
+            <h3><a>Our server accepts the following format for crowd-sourced data: "report [water/trash/electricity] [LOW/MID/HIGH] ±#.##,±#.##".</a></h3>
+            <h3>(Ex. report water HIGH 7.38,-2.21)</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="site-section site-block-3 bg-light">
+      <h2 class="site-heading text-black mb-5 text-center" id="ALIGNCENTER">How to check for nearby trash</h2>
+        <div class="container">
+          <div class="row mb-5">
+            <div class="col-lg-4 col-md-6 mb-5 post-entry">
+              <a class="d-block figure">
+                <img src="/static/images/text-messaging.jpg" alt="Trash" class="img-fluid">
+              </a>
+              <h2>Step 1:</h2>
+              <h3><a>Text FloodGate at +1 (201) 482-3830 with format "query [coordinates] [search_radius]".</a></h3>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-5 post-entry">
+              <a class="d-block figure">
+                <img src="/static/images/textalert1.jpg" alt="Text Us" class="img-fluid">
+              </a>
+              <h2>Step 2:</h2>
+              <h3><a>Receive a text containing the closest recent report within your search radius in the format "[distance] [coordinates] [type] [severity]". </a></h3>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-5 post-entry">
+              <a class="d-block figure">
+                <img src="/static/images/hunting.jpg" alt="Describe the issue" class="img-fluid">
+              </a>
+              <h2>Step 3:</h2>
+              <h3><a>Help your local community out!</a></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}
