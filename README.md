@@ -27,7 +27,6 @@ Coming into this project as a Flask novice, I had absolutely no experience with 
 I hope to expand the site into a fully integrated site complete with enhanced user experiences and design. I'm also actively pushing myself to create an iOS app for FloodGate, which I hope to push into production soon! Stay tuned for more updates!
 
 ## Awards
-### HackDuke 2019 - Best Use of Twilio Award [MLH]
-### HackDuke 2019 - Wolfram Award
+### HackDuke 2019: MLH - Best Use of Twilio Award, Wolfram Award
 
 Made with ❤ in 2019
