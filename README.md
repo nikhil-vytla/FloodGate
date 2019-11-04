@@ -1,15 +1,29 @@
-# ProjectErie
+# FloodGate
+Welcome to FloodGate, a fully functional, responsive, natural disaster early-warning & detection web app dedicated to enabling communities, first-responders, and local governments in times of crisis.
+
 ## Inspiration
-Often trash cleanups are efforts made on shore, ignoring the masses of garbage floating in the middle of lakes and oceans. This doesn't just look bad, but affects the quality of water and the ecosystem of the body of water. Additionally we decided that algae blooms should be another point of focus due to their potential to spread and destroy ecosystems. These issues are especially prominent in Lake Erie, which was our main focus, having previous occurrences of algae blooms and of course, unwanted trash (it should be alarming that this is so common that it's a given). We wanted to provide the public not only a way to evaluate the magnitude of the problem at hand, but also a platform for them to contribute towards fixing this problem. 
+Today's world increasingly interacts with natural disasters and climate phenomena, in large part caused by anthropomorphic global warming, For many of us, not only in the US but also around the world, access to definitive pipelines for connections and educational resources is severely lacking, and thus FloodGate provides a streamlined path to help the students, community leaders, and people of the future get a headstart.
+
 ## What it does
-The app allows the users to crowdsource information about the current state of a body of water by providing details on locations of unwanted trash or algae blooms along with the severity. The platform we created also serves as an educational tool that informs the public of the actual state that our lakes are in and providing data for others who want to process the data in their own way.
-## How we built it
-A flask app using html, css, and javascript for the frontend. 
-## Challenges we ran into
-Getting the maps and css to work when we had to move files to a static folder.
-## Accomplishments that we're proud of
-Getting the Google Maps API to work and getting the Twilio API to work. Also having a finished functional product.
-## What we learned
-While researching about the great lakes, we found the quality of the lakes were much lower than we expected. This inspired us to create a platform that informed the public about this issue. 
-## What's next for ProjectErie
-A lot of improvements related to user experience as well as a few features to be implemented.
+FloodGate has several functions. The SMS notification system provides persons in need with easy, reliable, and secure access to responders and volunteers, and its intended purpose is to help users identify key events established during the path of a natural disaster so they can make more informed decisions and gain vital contact/rescue information. FloodGate also implements an autonomous, remote, and cheap sensing device, built with multiple contact functionalities and messaging services. This is all compiled into an accessible, user-friendly website which includes resources to heatmaps and real-time models of natural disasters.
+
+## How I built it
+### Twilio API (SMS), Google Maps (GCP), Flask, and Ngrok
+FloodGate's creation required building and utilizing functional RESTful APIs and packages to create a responsive site. The site is styled via Python's Flask library. The backend server is supported by Ngrok, providing localhost access to webhooks. The SMS ping system is backed entirely by Twilio's Programmable SMS API, providing FloodGate users and first-responders with RESTful, real-time notifications. We also use Firebase's Cloud Firestore database service to host our sensor and SMS data (with SQLite3 as an offline backup) and GCP's Google Maps Platform to display location-based data on interactive maps.
+
+### Arduino, C, Python, Matplotlib and a Whole Lot of Solder
+The FloodGate sensor is built using an Arduino 101 and Ultrasonic Distance Module HR-S04 using the established Arduino IDE and C. Serial data is handling via Python's PySerial library.
+
+## Challenges I ran into
+**It was my first time making an actual project on an Arduino, and I had never really used Flask before**. In the process of making the site, I ran into several production issues with Ngrok. Additionally, I encountered difficulties connecting to the development server on several instances, and the Twilio versioning proved challenging for the back-end.
+
+## Accomplishments that I'm proud of
+I'm amazed that I was able to complete FloodGate over such a small duration, especially considering my lack of experience with Flask and Arduino. I faced many set-backs with the site interface, so ultimately having a working version of the site pushed into production was extremely fulfilling.
+
+## What I learned
+Coming into this project as a Flask novice, I had absolutely no experience with anything related to the Twilio API, and minimal experience with Ngrok servers and design. However, I managed to bridge this gap by constantly pushing myself to learn more about C, poring over documentation, and seeking help when needed on StackOverflow and Google. Ultimately, I needed to think and rethink the overall coding process, and finding that common ground and challenging myself to truly understand code instead of haphazardly copying it from forum pages really allowed me to progress. I was also able to experiment with new technologies such as Cloud Firestore, SQLite3, Ngrok, and others.
+
+## What's next for FloodGate
+I hope to expand the site into a fully integrated site complete with enhanced user experiences and design. I'm also actively pushing myself to create an iOS app for FloodGate, which I hope to push into production soon! Stay tuned for more updates!
+
+Made with ❤ in 2019
